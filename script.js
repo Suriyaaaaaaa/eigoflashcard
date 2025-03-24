@@ -13,7 +13,7 @@ fetch("flashcards.csv")
         updateFlashcard();
     });
 
-// Update flashcard display
+// Update the flashcard display
 function updateFlashcard() {
     let cardImage = document.getElementById("cardImage");
     let cardText = document.getElementById("cardText");
@@ -29,19 +29,20 @@ function updateFlashcard() {
     }
 }
 
-// Flip the card
+// Flip the card on click
 document.getElementById("flashcard").addEventListener("click", () => {
     showAnswer = !showAnswer;
     updateFlashcard();
 });
 
-// Navigate cards
+// Navigate to the next card
 function nextCard() {
     currentIndex = (currentIndex + 1) % flashcards.length;
     showAnswer = false;
     updateFlashcard();
 }
 
+// Navigate to the previous card
 function prevCard() {
     currentIndex = (currentIndex - 1 + flashcards.length) % flashcards.length;
     showAnswer = false;
