@@ -18,15 +18,26 @@ function updateFlashcard() {
     let cardImage = document.getElementById("cardImage");
     let cardText = document.getElementById("cardText");
 
-    if (showAnswer) {
-        cardImage.classList.add("hidden");
-        cardText.classList.remove("hidden");
-        cardText.innerText = flashcards[currentIndex].answer;
-    } else {
-        cardImage.classList.remove("hidden");
-        cardText.classList.add("hidden");
-        cardImage.src = flashcards[currentIndex].image;
-    }
+    // Fade out the current content
+    cardImage.style.opacity = 0;
+    cardText.style.opacity = 0;
+
+    // Wait for the fade-out to complete before updating the content
+    setTimeout(() => {
+        if (showAnswer) {
+            cardImage.classList.add("hidden");
+            cardText.classList.remove("hidden");
+            cardText.innerText = flashcards[currentIndex].answer;
+        } else {
+            cardImage.classList.remove("hidden");
+            cardText.classList.add("hidden");
+            cardImage.src = flashcards[currentIndex].image;
+        }
+
+        // Fade the new content in
+        cardImage.style.opacity = 1;
+        cardText.style.opacity = 1;
+    }, 500);  // Match the CSS transition duration
 }
 
 // Flip the card on click
